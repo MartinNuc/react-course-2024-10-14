@@ -27,6 +27,6 @@ export function Joke() {
   return <>
     {isLoading && '🕰️'}
     {joke}
-    <button onClick={loadJoke}>Load next</button>
+    <button disabled={isLoading} onClick={loadJoke}>Load next</button>
   </>
 }
