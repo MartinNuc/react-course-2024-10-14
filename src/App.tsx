@@ -1,21 +1,13 @@
-import { AlbumVoting } from "./albums/album-voting";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { UserContextProvider } from "./context/user-context";
-import { UserInfoPane } from "./context/user-info-pane";
-import { ErrorBoundary } from "./error-boundary/error-boundary";
-import { ThrowComponent } from "./error-boundary/throw-component";
+import { router } from "./routes/router";
 
 function App() {
   return (
-    <ErrorBoundary>
-      <UserContextProvider>
-        <div className="App">
-          <UserInfoPane />
-          <AlbumVoting />
-          <ThrowComponent />
-        </div>
-      </UserContextProvider>
-    </ErrorBoundary>
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
   );
 }
 
