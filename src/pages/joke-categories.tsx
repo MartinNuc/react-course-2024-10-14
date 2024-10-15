@@ -1,6 +1,8 @@
 // joke-categories.tsx
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export function JokeCategories() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -11,8 +13,17 @@ export function JokeCategories() {
     );
   }, []);
 
-  return <>
-    CATEGORIES
-    {/* TODO */}
-  </>;
+  return (
+    <>
+      <ul>
+        {categories.map((category) => (
+          <li key={category}>
+            <Link to={category}>{category}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <Outlet />
+    </>
+  );
 }

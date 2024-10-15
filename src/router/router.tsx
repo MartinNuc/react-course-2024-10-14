@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layout";
-import { Home } from "./home";
-import { JokeCategories } from "./joke-categories";
+import { Home } from "../pages/home";
+import { JokeCategories } from "../pages/joke-categories";
+import { Joke } from "../pages/joke";
 
 export const router = createBrowserRouter([
   {
@@ -14,8 +15,14 @@ export const router = createBrowserRouter([
       },
       {
         path: 'categories',
-        element: <JokeCategories />
-      }
+        element: <JokeCategories />,
+        children: [
+          {
+            path: ':category',
+            element: <Joke />
+          }
+        ]
+      },
     ]
   }
 ]);
