@@ -3,26 +3,31 @@ import { Layout } from "./layout";
 import { Home } from "../pages/home";
 import { JokeCategories } from "../pages/joke-categories";
 import { Joke } from "../pages/joke";
+import { Suspense } from "react";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
-        path: 'categories',
+        path: "categories",
         element: <JokeCategories />,
         children: [
           {
-            path: ':category',
-            element: <Joke />
-          }
-        ]
+            path: ":category",
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <Joke />
+              </Suspense>
+            ),
+          },
+        ],
       },
-    ]
-  }
+    ],
+  },
 ]);
