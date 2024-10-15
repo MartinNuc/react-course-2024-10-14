@@ -8,7 +8,7 @@ export type Album = {
 }
 
 export const AlbumVoting = () => {
-  const [albums, setAlbums] = useState(new Array(15).fill({
+  const [albums, setAlbums] = useState(new Array(150).fill({
     id: 0,
     title: '',
     rating: 0
